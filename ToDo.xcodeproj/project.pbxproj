@@ -57,11 +57,11 @@
 			isa = PBXGroup;
 			children = (
 				BE232FF720A4B31F006DCF99 /* AppDelegate.swift */,
-				BED8B93F20A7905400192BAE /* Views */,
 				BED8B93E20A7904A00192BAE /* Controllers */,
 				BED8B93D20A7904200192BAE /* Data Model */,
-				BED8B94020A7906200192BAE /* Supporting Files */,
 				BE23300320A4B31F006DCF99 /* Info.plist */,
+				BED8B93F20A7905400192BAE /* Views */,
+				BED8B94020A7906200192BAE /* Supporting Files */,
 			);
 			path = ToDo;
 			sourceTree = "<group>";
