@@ -12,8 +12,8 @@ import RealmSwift
 
 //Inherit realm object
 class Item : Object {
-	@objc var title : String = ""
-	@objc var done : Bool = false
+	@objc dynamic var title : String = ""
+	@objc dynamic var done : Bool = false
 	
 	//From Category to Items (as in items.swift)
 	let parentCategory = LinkingObjects(fromType: Category.self, property: "items")
