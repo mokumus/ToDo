@@ -12,14 +12,12 @@ import RealmSwift
 class CategoryViewController: SwipeTableTableViewController {
 
 	let realm = try! Realm()
-
 	var categories: Results<Category>?
 	
     override func viewDidLoad() {
-        super.viewDidLoad()
 		
+		super.viewDidLoad()
 		tableView.rowHeight = 65.0
-		
 		loadCategories()
     }
 	
@@ -43,11 +41,11 @@ class CategoryViewController: SwipeTableTableViewController {
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		
 		let destinationVC = segue.destination as! TodoListViewController
 		
 		if let indexPath = tableView.indexPathForSelectedRow {
 			destinationVC.selectedCategory = categories?[indexPath.row]
-
 		}
 	}
 	
@@ -79,7 +77,7 @@ class CategoryViewController: SwipeTableTableViewController {
 					print("Category deleted")
 				}
 			}catch{
-				print("Error when deleting  category, \(error)")
+				print("Error when deleting category, \(error)")
 			}
 		}
 	}
