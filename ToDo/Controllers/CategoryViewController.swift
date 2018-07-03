@@ -17,6 +17,7 @@ class CategoryViewController: SwipeTableTableViewController {
     override func viewDidLoad() {
 		
 		super.viewDidLoad()
+	
 		tableView.rowHeight = 65.0
 		loadCategories()
     }
@@ -33,6 +34,8 @@ class CategoryViewController: SwipeTableTableViewController {
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return categories?.count ?? 1
 	}
+	
+
 	
 	//MARK: - TableView Delegete Methods
 	
@@ -88,22 +91,20 @@ class CategoryViewController: SwipeTableTableViewController {
 	@IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
 		
 		let alert = UIAlertController(title: "Add New Category", message: "", preferredStyle: .alert)
-		
 		var textField = UITextField()
-		
-		let action = UIAlertAction(title: "Add Category", style: .default) { (action) in
+		let action = UIAlertAction(title: "Add", style: .default) { (action) in
 			
 			// What will happen when addCategory is clicked on UIAlert
 			if textField.text?.count != 0 {
-				
 				let newCategory = Category()
 				newCategory.name = textField.text!
-				
-				//self.categories.append(newCategory)
-				
 				self.save(category : newCategory)
 			}
 			self.tableView.reloadData()
+		}
+		
+		let cancel = UIAlertAction(title: "Cancel", style: .default) { (cancel) in
+			//Do nothing
 		}
 		
 		alert.addTextField { (alertTextField) in
@@ -111,8 +112,13 @@ class CategoryViewController: SwipeTableTableViewController {
 			textField = alertTextField
 		}
 		
+		textField.keyboardAppearance = .dark
 		alert.addAction(action)
+		alert.addAction(cancel)
 		present(alert, animated: true, completion: nil)
+		
+		
+		
 	}
 }
 

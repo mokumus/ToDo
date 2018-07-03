@@ -20,7 +20,7 @@
                         <searchBar key="tableHeaderView" contentMode="redraw" id="mva-5q-5Cp">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                             <connections>
                                 <outlet property="delegate" destination="8yp-WT-2Kf" id="qif-Ce-qtT"/>
                             </connections>
@@ -75,7 +75,7 @@
             </objects>
             <point key="canvasLocation" x="-932" y="67"/>
         </scene>
-        <!--ToDo-->
+        <!--Categories-->
         <scene sceneID="IXT-Wn-QHs">
             <objects>
                 <tableViewController id="OUk-rw-Oi2" customClass="CategoryViewController" customModule="ToDo" customModuleProvider="target" sceneMemberID="viewController">
@@ -98,7 +98,7 @@
                             <outlet property="delegate" destination="OUk-rw-Oi2" id="FTQ-ph-DTi"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="ToDo" id="MP5-Vo-72F">
+                    <navigationItem key="navigationItem" title="Categories" id="MP5-Vo-72F">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="6Tt-Sa-B3l">
                             <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>

@@ -22,6 +22,8 @@ var window: UIWindow?
 			print("Error initializing the Realm \(error)")
 		}
 		
+		UIApplication.shared.statusBarStyle = .lightContent
+		
 		return true
 	}
 	

@@ -17,6 +17,7 @@ class TodoListViewController: SwipeTableTableViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		tableView.rowHeight = 65.0
 	}
 
 	//MARK: - Tableview Datasource Methods
@@ -52,7 +53,6 @@ class TodoListViewController: SwipeTableTableViewController {
 				print("Error when toggling tick, \(error)")
 			}
 		}
-		
 		//tableView.deselectRow(at: indexPath, animated: true)
 		tableView.reloadData()
 	}
@@ -79,7 +79,7 @@ class TodoListViewController: SwipeTableTableViewController {
 		let alert = UIAlertController(title: "Add New Item", message: "", preferredStyle: .alert)
 		var textField = UITextField()
 		
-		let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
+		let action = UIAlertAction(title: "Add", style: .default) { (action) in
 			if textField.text?.count != 0 {
 
 				if let currentCotegory = self.selectedCategory {
@@ -93,10 +93,13 @@ class TodoListViewController: SwipeTableTableViewController {
 					} catch{
 						print("Error saving items, \(error)")
 					}
-
 				}
 			}
 			self.tableView.reloadData()
+		}
+		
+		let cancel = UIAlertAction(title: "Cancel", style: .default) { (cancel) in
+			//Do nothing
 		}
 		
 		alert.addTextField { (alertTextField) in
@@ -104,7 +107,9 @@ class TodoListViewController: SwipeTableTableViewController {
 			textField = alertTextField
 		}
 		
+		textField.keyboardAppearance = .dark
 		alert.addAction(action)
+		alert.addAction(cancel)
 		present(alert, animated: true, completion: nil)
 	}
 	
@@ -119,8 +124,8 @@ class TodoListViewController: SwipeTableTableViewController {
 
 //MARK: - Search Bar Methods
 
-
 extension TodoListViewController: UISearchBarDelegate{
+	
 
 	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
 		items = items?.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "dateCreated", ascending: true)
@@ -128,11 +133,15 @@ extension TodoListViewController: UISearchBarDelegate{
 	}
 
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+		
 		if searchBar.text?.count == 0{
 			loadItems()
-
 			DispatchQueue.main.async {
 				searchBar.resignFirstResponder() //dismisses keyboard
+				
+				if let cancelButton = searchBar.value(forKey: "cancelButton") as? UIButton{
+				cancelButton.isEnabled = true
+				}
 			}
 		}
 	}
